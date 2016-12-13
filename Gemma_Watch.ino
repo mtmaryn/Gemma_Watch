@@ -98,15 +98,15 @@ void set_time(){
   strip.show();
   //set hour
   int i = 0;
-  while(true){
+  while(true){ //Loops through each hour, user presses the push button when current hour is lit
     strip.setPixelColor(i, hour_color);
     strip.show();
-    delay(1000);
+    delay(1000); //Stays on each LED/Hour for 1 second
     int val = digitalRead(button);
     if(val == 1){
-      h = i;
+      h = i; //Sets hour 
       i = 0;
-      break;
+      break; 
     }
     strip.setPixelColor(i, off);
     strip.show();
@@ -116,14 +116,14 @@ void set_time(){
     }
   }
   //set minute
-  while(true){
-    strip.setPixelColor(h, hour_color);
-    strip.setPixelColor(i, minute_color);
+  while(true){ //Loops through each minute, user presses the push button when current minute is lit
+    strip.setPixelColor(h, hour_color); //Dispalys hour for users information
+    strip.setPixelColor(i, minute_color); 
     strip.show();
     delay(1000);
     int val = digitalRead(button);
     if(val == 1){
-      m = 5*i;
+      m = 5*i;//only 12 leds so we round
       i = 0;
       break;
     }
@@ -134,5 +134,5 @@ void set_time(){
       i = 0;
     }
   }
-  setTime(h,m,0,12,12,2016);
+  setTime(h,m,0,12,12,2016); //Set the new time
 }
